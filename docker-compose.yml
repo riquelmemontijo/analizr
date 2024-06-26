@@ -1,0 +1,23 @@
+services:
+  analizr_db:
+    image: postgres:16.3
+    container_name: analizr_db
+    environment:
+      POSTGRES_DB: analizr_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    networks:
+      - analizr_bridge
+    ports:
+      - "5432:5432"
+    volumes:
+      - analizr_db_data:/var/lib/postgresql/data
+
+networks:
+  analizr_bridge:
+    driver: bridge
+
+volumes:
+  analizr_db_data:
+
+
